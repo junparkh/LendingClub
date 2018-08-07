@@ -1,7 +1,7 @@
 ---
 layout: page
-title: test1title
-permalink: /test1/
+title: testtitle
+permalink: /test/
 ---
 
 ## test man!
