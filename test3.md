@@ -1,3 +1,9 @@
+---
+layout: page
+title: test3title
+permalink: /test3/
+---
+
 ## test3
 
 ### Bug Fixes
