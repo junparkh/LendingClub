@@ -18,9 +18,9 @@ remote_theme: jekyll/minima
 # googleplus_username: +jekyll
 
 # Mastodon instances
-mastodon:
- - username: jekyll
-   instance: example.com
+#mastodon:
+# - username: jekyll
+#   instance: example.com
 # - username: jekyll2
 #   instance: example.com
 
