@@ -18,12 +18,40 @@
             {%- if site.email -%}
             <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
             {%- endif -%}
+            {%- if site.author2 -%}
+              {{ site.author2 | escape }}
+            {%- else -%}
+              {{ site.title | escape }}
+            {%- endif -%}
+            </li>
+            {%- if site.email2 -%}
+            <li><a class="u-email" href="mailto:{{ site.email2 }}">{{ site.email2 }}</a></li>
+            {%- endif -%}
         </ul>
       </div>
 
       <div class="footer-col footer-col-2">
-        {%- include social.html -%}
-      </div>
+        <ul class="contact-list">
+          <li class="p-name">
+            {%- if site.author3 -%}
+              {{ site.author3 | escape }}
+            {%- else -%}
+              {{ site.title | escape }}
+            {%- endif -%}
+            </li>
+            {%- if site.email3 -%}
+            <li><a class="u-email" href="mailto:{{ site.email3 }}">{{ site.email3 }}</a></li>
+            {%- endif -%}
+            {%- if site.author4 -%}
+              {{ site.author4 | escape }}
+            {%- else -%}
+              {{ site.title | escape }}
+            {%- endif -%}
+            </li>
+            {%- if site.email4 -%}
+            <li><a class="u-email" href="mailto:{{ site.email4 }}">{{ site.email4 }}</a></li>
+            {%- endif -%}
+        </ul>      </div>
 
       <div class="footer-col footer-col-3">
         <p>{{- site.description | escape -}}</p>
