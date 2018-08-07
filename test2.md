@@ -10,4 +10,4 @@ permalink: /test2/
 how
 
 
-![Table1](/image/3Class.pdf)
+![Table1](/image/loan.png)
