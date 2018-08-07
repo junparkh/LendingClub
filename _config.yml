@@ -1,6 +1,16 @@
 title: Lendingclub - _config
-author: junpark  asd@asd.com, jasd  asd2@.com.
-email: fromconfig@domain.com,  asdasd@mas,   asd2@asd.com,   sad@asd.
+author: junpark  asd@asd.com
+email: fromconfig@domain.com
+author2:  fern
+email2:  fer@com.com
+author3: gre
+email3: ger@com.com
+author4: sof
+email4: sof@com.com
+
+
+
+
 description: > # this means to ignore newlines until "twitter_username:"
   Lendingclub! ( config)
 remote_theme: jekyll/minima
