@@ -6,8 +6,6 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 #
 layout: home
-title: Introduction
+title: Motivation
 ---
 
-# asdddsd
-asdsad
