@@ -7,7 +7,7 @@ permalink: /menu2/
 
 Studies show that discrimination against African American and Latino burroughs is a large problem.
 
-Reveal News published an article concerning discrimination in lending in <a href ="https://www.revealnews.org/article/for-people-of-color-banks-are-shutting-the-door-to-homeownership"</a> . This article cites a study showing lending discrimination even when controlling for the usual factors such as income, credit history, etc. Banks achieve this primarily through geographic discrimination.
+Reveal News published an article concerning discrimination in lending in <"https://www.revealnews.org/article/for-people-of-color-banks-are-shutting-the-door-to-homeownership"> . This article cites a study showing lending discrimination even when controlling for the usual factors such as income, credit history, etc. Banks achieve this primarily through geographic discrimination.
 
 Although the data presented to Lending Club borrowers does not include any racially identifiable data, it does contain information that is molded by the borrower&#39;s race. For example, people in one area may be far more likely to be white than in another area that is more diverse. Thus, looking at the state or zip code could give investors a preliminary indication of the likelihood that the borrower is white.
 
