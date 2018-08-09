@@ -1,6 +1,11 @@
 ---
-layout: default
+layout: page
+title : home!
 ---
+# a page
+
+
+
 <font size="7">Enhancing LendingClub Returns</font>
 <h2>by using Advanced Analytical Techniques</h2>
 <h1>&nbsp;</h1>
