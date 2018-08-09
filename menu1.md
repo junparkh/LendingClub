@@ -3,7 +3,9 @@ layout: page
 title: Understanding the Data
 permalink: /menu1/
 ---
-## Contents
+# Understanding the Data
+
+### Contents
 {:.no_toc}
 *  
 {: toc}
@@ -11,15 +13,15 @@ permalink: /menu1/
 ## Introduction and Description of Data
 asdsad
 
-# Description of Raw Data
+### Description of Raw Data
 
-# Discussion of Business Model
+### Discussion of Business Model
 
-# Features
+### Features
 
-# Simplification and Selection of Key Predictors
+### Simplification and Selection of Key Predictors
 
-# Standardization of Predictors
+### Standardization of Predictors
 
 
 
@@ -29,7 +31,7 @@ asdsad
 ## Exploratory Data Analysis
 
 
-# Histogram
+### Histogram
 
 
-# Scatter-matrix
+### Scatter-matrix
