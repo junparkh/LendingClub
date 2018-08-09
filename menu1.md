@@ -3,8 +3,6 @@ layout: page
 title: Understanding the Data
 permalink: /menu1/
 ---
-# Understanding the Data
-
 ### Contents
 {:.no_toc}
 *  
