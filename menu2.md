@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Literature Review
+title: Discrimination
 permalink: /menu2/
 ---
 ## What does best in class Credit Scoring look like?
