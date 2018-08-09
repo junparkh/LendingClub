@@ -1,12 +1,12 @@
 title: Lendingclub Project
-author: junpark  asd@asd.com
-email: fromconfig@domain.com
-author2:  fern
-email2:  fer@com.com
-author3: gre
-email3: ger@com.com
-author4: sof
-email4: sof@com.com
+author: HyounJun Park
+email: junparkh@domain.com
+author2:  Fernando Trias
+email2:  fernando@trias.org
+author3: Roger Iliffe
+email3: rogerjiliffe@gmail.com
+author4: Siyuan Yin
+email4: siy422@g.harvard.edu
 
 
 
@@ -45,11 +45,10 @@ minima:
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
 #header_pages:
-# - test.md
-# - test2.md
-# - test3.md
-# - test4.md
-# - test5.md
+# - menu1.md
+# - menu2.md
+# - menu3.md
+# - menu4.md
 
 
 
