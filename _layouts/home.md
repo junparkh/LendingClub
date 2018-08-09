@@ -1,10 +1,7 @@
 ---
 layout: default
-title : homepage
 ---
-# pagehome
-
-<font size="6">Enhancing LendingClub Returns</font>
+<font size="7">Enhancing LendingClub Returns</font>
 <h2>by using Advanced Analytical Techniques</h2>
 <h1>&nbsp;</h1>
 <h4><strong>Motivation</strong></h4>
