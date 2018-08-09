@@ -12,7 +12,7 @@ email4: siy422@g.harvard.edu
 
 
 description: > # this means to ignore newlines until "twitter_username:"
-  Lendingclub! ( config)
+  This is the final project of Harvard University CS-109A Data Science.
 remote_theme: jekyll/minima
 # social links
 # twitter_username: jekyllrb
