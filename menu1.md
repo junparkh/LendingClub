@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Understanding the Data
+title: Data Wrangling
 permalink: /menu1/
 ---
 ### Contents
