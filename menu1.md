@@ -6,7 +6,7 @@ permalink: /menu1/
 {:.no_toc}
 *  
 {: toc}
-**Description of Data:**
+### Description of Data:
 
 We downloaded the raw data from the Lending Club website. The data was structured as a large.csv.  Data was provided related to the unfunded and the funded loans. Unfortunately there was very little data provided related to the actual demographics of the borrowers.  This made performing any analyses related to either discrimination or preferential treatment impossible.
 
