@@ -44,6 +44,8 @@ For regression models, the models attempted to predict APR directly.
 
 For categorical models, we designated a cutoff target APR. We created a binary category: loans that meet the minimum APR and loans that do not.
 
+One problem with using APR is that it can be negative. This may cause problems in the models because negative values require negative coefficients. In the *Future Exploration* section below we discuss various ways we were planning to deal with this.
+
 ### Test / Train split
 
 For our initial model exploration, we split the entire data set into a training set and a test set. 75% of the data was used for training. 25% was used for testing. Our plan was to later tune model hyperparameters by creating three data set: Training, Tuning, Test. As explained later, we ran out of time to do this.
@@ -68,11 +70,13 @@ We examined a few models to determine whether a loan would make money or lose mo
 
 To start, we created several baseline models to see if which algorithms, if any, were worth exploring.
 
-Regression models were unable to accurately predict (based on R^2) a numerical APR. Linear regressions, LR with lasso, random forest regression, ada boost regression all yielded very small R^2 and expected returns either close to 0 or negative. These models were surprisingly unable to make any clear predictions.
+Regression models were unable to accurately predict (based on R^2) a numerical APR. Linear regressions, LR with lasso, random forest regression, ada boost regression all yielded very small R^2 and expected returns either close to 0 or negative. These models were unable to make many good predictions.
 
-Classification models were also not very successful. Many of these models generated large accuracy scores, but fared badly when an expected return was calculated. Many models fared better than the overall average return -0.024. This was unexpectedly bad performance. Unfortunately, we ran out of time before we could fully explore this. One theory is that the model tends to find unusual loans. Usually, these are high returns, but many times, they are also exceptionally bad. Bad loans are far worse than good loans, because you can loose all your money, whereas your gains are limited by the interest rate.
+Classification models were also not very successful. Many of these models generated large accuracy scores, but fared badly when an expected return was calculated. Many models fared only slightly better than the overall average return -0.024. This was unexpectedly bad performance. Unfortunately, we ran out of time before we could fully explore this. One theory is that the models tended to find unusual loans. Usually, these are high returns, but some times, they are also exceptionally bad. Bad loans are far worse than good loans, because you can loose all your money, whereas your gains are limited by the interest rate.
 
-Logistic regression had a train and test accuracy around 0.7, but yielded an average APR of -0.08. We fit several random forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -0.05.
+Logistic regression had a train and test accuracy around 0.7, but yielded an average APR of -0.08. 
+
+We fit several random forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -0.05.
 
 Using the same random forest model, rather than looking at the predictions, we looked at the probabilities predicted. We chose only those loans where the probability was greater than 0.9. That stretegy select 8% of returns and yielded an APR of 0.028, which is better than average.
 
@@ -88,10 +92,16 @@ A neural network model did not yield good results on its own. However, when we l
 
 Lastly, we created a stacking model combining probability estimates of the logistic, random forest and neural network models created earlier. A strategy of picking only those loans where all three models agreed with probability of more than 0.8 yieled returns of 0.02.
 
-Thus, the best model was a random forest model that selected loans where the probability estimates were over 0.9. This yielded returns close to 0.05 on the test data.
+Thus, the best model was a neural network model that selected loans where the probability estimates were over 0.9. This yielded returns close to 0.05 on the test data.
+
+## Future Exploration
+
+As mentioned earlier, we need to perform further optimization of hyperparameters for the most promising models by creating a separate tuning data set. In addition, cross validation needs to be performed to ensure reliable results.
+
+One thing that stood out was that most models did somewhat worse than the average return. Even models where the R^2 and accuracy were similar for both the training and testing set would often perform worse than average. This was counter-intuitive and suggest serious problem with either the data or the model. Unfortunately, we were unable to fully explore the reasons for this. One posibility is that the train/test split needs to be perfomed differently. Another is overfitting.
+
+Beacause APR can be negative, which may confuse the models, our plan was to create models using 1+APR to eliminate negative numbers. Another plan was using the log of the APR, as in "log(1+APR)", to penalize negative APRs. Or even 1+log(1/(1 + APR)), which would have smaller numbers be better loan choices, while still penalizing bad loans. These sorts of modifications would have created significantly different models that may have worked better. The biggest problem with the models was that a few bad loans dispropotionally affected the return.
 
 ### Portfolio(size) and discrimination
 
-Although we did collect data on demographics
-
-## Future
+Although we did collect data on demographics, we were unable to join to our data due to time constraints. Our plan was to see if our models tended to pick loans in locations that were primarily non-minority and then explore why the models behaved as they did. Unfortunately, time constraints did not allow this. Even though this would not be proof of discrimination, it might suggest areas of further exploration.
