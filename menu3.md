@@ -62,6 +62,8 @@ The categorical models were optimized to maximize accuracy. But accuracy is not 
 
 To account for this problem, we created an `evaluate_strategy` function which will estimate an average APR for a given model. It creates a list of the loans the model predicts will do well and then returns the mean of the APR. In essense, this would be like estimating the total return of investing $1 in each loan. One important metric is also the percent of loans that match the strategy. For example, if the strategy matches 90% of loans, then it is not good for selection. Likewise, if only 0.1% of loans are matched, it may require a lot of work to pick out winning loans.
 
+A better solution would be to optimize for average APR instead of accuracy. However, we ran out of time before we were able to try this.
+
 ## Overall structure of our method for determining which loans we should take:
 
 Our plan was to create a number of different models to see which ones were most promising and then exploring these in greater detail. Unfortunately, time constraints limited our ability to explore models in depth. 
