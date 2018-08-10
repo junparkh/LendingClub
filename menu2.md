@@ -3,6 +3,9 @@ layout: page
 title: EDA & Discrimination
 permalink: /menu2/
 ---
+## EDA
+
+
 ## Discriminatory Behaviour
 
 Studies show that discrimination against African American and Latino burroughs is a large problem.
