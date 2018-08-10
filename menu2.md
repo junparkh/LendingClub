@@ -1,6 +1,6 @@
 ---
 layout: page
-title: EDA & Discrimination
+title: EDA
 permalink: /menu2/
 ---
 ## EDA
