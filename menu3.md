@@ -110,6 +110,8 @@ One thing that stood out was that most models did somewhat worse than the averag
 
 Beacause APR can be negative, which may confuse the models, our plan was to create models using 1+APR to eliminate negative numbers. Another plan was using the log of the APR, as in "log(1+APR)", to penalize negative APRs. Or even 1+log(1/(1 + APR)), which would have smaller numbers be better loan choices, while still penalizing bad loans. These sorts of modifications would have created significantly different models that may have worked better. The biggest problem with the models was that a few bad loans dispropotionally affected the return.
 
+Another question that we did not have time to investigate is how large our investment portfolio must be to reduce volatility. Even if predictions are on average good, it's possible that the average only holds over very large numbers of loans. If you have a smaller loan portfolio, the returns might be more volatile and unpredictable. Cross validation of the models using different sizes of randomized loan portfolios would help address this question.
+
 ### Portfolio(size) and discrimination
 
 Although we did collect data on demographics, we were unable to join to our data due to time constraints. Our plan was to see if our models tended to pick loans in locations that were primarily non-minority and then explore why the models behaved as they did. Unfortunately, time constraints did not allow this. Even though this would not be proof of discrimination, it might suggest areas of further exploration.
