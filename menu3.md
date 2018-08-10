@@ -44,6 +44,10 @@ For regression models, the models attempted to predict APR directly.
 
 For categorical models, we designated a cutoff target APR. We created a binary category: loans that meet the minimum APR and loans that do not.
 
+### Test / Train split
+
+For our initial model exploration, we split the entire data set into a training set and a test set. 75% of the data was used for training. 25% was used for testing. Our plan was to later tune model hyperparameters by creating three data set: Training, Tuning, Test. As explained later, we ran out of time to do this.
+
 ## Accuracy vs APR
 
 The categorical models were optimized to maximize accuracy. But accuracy is not the best indicator of success because a few bad loans could easily wipe out any profits from good loans. For example, let's say we pick 10 loans: 9 of which return 7%, but one which is a total loss at -100%. That would be 90% accuracy. But still a return of -37%, which is pretty bad.
@@ -52,18 +56,42 @@ To account for this problem, we created an `evaluate_strategy` function which wi
 
 ## Overall structure of our method for determining which loans we should take:
 
+Our plan was to create a number of different models to see which ones were most promising and then exploring these in greater detail. Unfortunately, time constraints limited our ability to explore models in depth. 
 
+As a consequence, we were unable to optimize the hyperparameters for promising models. Our plan was to create three data sets (or more as needed): training, tuning, testing. We would then tune the hyperparameters based on the results on the tuning set. Additionally, we had hoped to do cross validation to analyze the stability of our parameters. This is an area for future exploration.
 
 ### Loss prevention
 
-We examined a few models to determine whether a loan would make money or lose money. That is, rather than picking a target APR, merely try to predict APR >= 0. In general these were no more successful than predicting a target return.
+We examined a few models to determine whether a loan would make money or lose money. That is, rather than picking a target APR, merely try to predict APR >= 0. In general these were no more successful than trying predict which loans would meet a minimum target return.
 
-### Maximise profit
+### Exploring: maximize profit
+
+To start, we created several baseline models to see if which algorithms, if any, were worth exploring.
 
 Regression models were unable to accurately predict (based on R^2) a numerical APR. Linear regressions, LR with lasso, random forest regression, ada boost regression all yielded very small R^2 and expected returns either close to 0 or negative. These models were surprisingly unable to make any clear predictions.
 
 Classification models were also not very successful. Many of these models generated large accuracy scores, but fared badly when an expected return was calculated. Many models fared better than the overall average return -0.024. This was unexpectedly bad performance. Unfortunately, we ran out of time before we could fully explore this. One theory is that the model tends to find unusual loans. Usually, these are high returns, but many times, they are also exceptionally bad. Bad loans are far worse than good loans, because you can loose all your money, whereas your gains are limited by the interest rate.
 
-Logistic Regression had a train and test accuracy around 0.7, but yielded an average APR of -0.08. We fit several Random Forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -0.05.
+Logistic regression had a train and test accuracy around 0.7, but yielded an average APR of -0.08. We fit several random forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -0.05.
+
+Using the same random forest model, rather than looking at the predictions, we looked at the probabilities predicted. We chose only those loans where the probability was greater than 0.9. That stretegy select 8% of returns and yielded an APR of 0.028, which is better than average.
+
+Random forest regression did not yield better results. Adaboost regressor was unable to create a working model.
+
+We created two adaboost classification models. The first did not use a base classifier. The second used random forest. Both were unable to yield positive returns.
+
+Next, we considered the use of polynomial factors. In order to limit the complexity of the models, we chose a subset of the most promising factors and then created polynomial factors of order 2. A logistic regression yielded R^2 of 0.7 for both train and test. However, the strategy yielded a loss.
+
+A single decision tree, linear discriminant analysis and quadratic discriminant analysis likewise did not yield good results.
+
+A neural network model did not yield good results on its own. However, when we looked at the probabilities the results were more promising. A strategy of picking stocks where the probability estimates were over 0.9 yielded returns of 0.05 on the test data, which is significantly higher than average and the best results so far.
+
+Lastly, we created a stacking model combining probability estimates of the logistic, random forest and neural network models created earlier. A strategy of picking only those loans where all three models agreed with probability of more than 0.8 yieled returns of 0.02.
+
+Thus, the best model was a random forest model that selected loans where the probability estimates were over 0.9. This yielded returns close to 0.05 on the test data.
 
 ### Portfolio(size) and discrimination
+
+Although we did collect data on demographics
+
+## Future
