@@ -10,11 +10,13 @@ permalink: /menu1/
 
 We downloaded the raw data from the Lending Club website. The data was structured as a large.csv.  Data was provided related to the unfunded and the funded loans. Unfortunately there was very little data provided related to the actual demographics of the borrowers.  This made performing any analyses related to either discrimination or preferential treatment impossible.
 
-**Overview of the raw data** : There were 1,873,290 records in the data file covering a span of almost 11 years of data.  The funded data relates to loans which have been approved by the LendingClub and then funded by investors.  The unfunded data (&#39;rejected&#39;) relates to borrowing applications which had been approved by LendingClub and assigned a credit rating but not funded by investors.  The critical part of our modeling would focus on whether loan applications which were funded were actually repaid and, if they were repaid, the overall level of interest earned on these loans.  Unfortunately, the unfunded data was of little help in determining profitability as there is then no record of whether these loan applicants would or would not have repaid their loans.
+#### Overview of the raw data:
+There were 1,873,290 records in the data file covering a span of almost 11 years of data.  The funded data relates to loans which have been approved by the LendingClub and then funded by investors.  The unfunded data (&#39;rejected&#39;) relates to borrowing applications which had been approved by LendingClub and assigned a credit rating but not funded by investors.  The critical part of our modeling would focus on whether loan applications which were funded were actually repaid and, if they were repaid, the overall level of interest earned on these loans.  Unfortunately, the unfunded data was of little help in determining profitability as there is then no record of whether these loan applicants would or would not have repaid their loans.
 
 [If we had been able to pursue the discrimination issue further then the unfunded data would have been a potentially interesting source of information.  We believe that the most likely point where discrimination might take place would be at the point between &quot;approved by LendingClub&quot; and &quot;funded by investors&quot;.   That said, given LendingClub&#39;s poor track record with respect to data transparency there would also have been opportunities for discrimination in the initial phase from applicant to approval by LendingClub. For more details on the ongoing litigation against Lending Club please see the section on discrimination.]
 
-**Data Wrangling** : We concentrated the data wrangling activities within the file Data\_cleansing.ipynb.  The data wrangling can be broken down into give different parts:
+#### Data Wrangling
+We concentrated the data wrangling activities within the file Data\_cleansing.ipynb.  The data wrangling can be broken down into give different parts:
 
 1. Credit-worthiness;
 2. Loan Dates;
@@ -74,7 +76,7 @@ Completed Loans: we assigned &quot;good&quot; to those loans which were fully pa
 
 We hoped that this reduced parametric subset would allow us to run quicker models.
 
-**Business Model Update**** :**
+### Business Model Update:
 
 Following a in depth review of the LendingClub (LC) website as well as an analysis of their past two 10K submissions which are available on the SEC&#39;s Edgar portal (see references) our understanding of the overall business model has evolved considerable.
 
@@ -119,10 +121,12 @@ To earn the same investment return from the poor credit as from the excellent cr
 
 (e) Each investor has their own targeted returns, however, for simplicity, we have used the examples given on the Investor video provided by LC = 5%.
 
-**Summary of Findings – Caps, and Floors** : Each loan tranche that the investor funds have an implicit capped return, i.e. the borrower agrees to the loan with a fixed interest rate which cannot be increased over the life of the loan. This is the maximum return that the investor can make and therefore represents the cap. On the other hand, because it is an unsecured loan the potential loss for the investor is 100%.
+### Summary of Findings – Caps, and Floors:
+Each loan tranche that the investor funds have an implicit capped return, i.e. the borrower agrees to the loan with a fixed interest rate which cannot be increased over the life of the loan. This is the maximum return that the investor can make and therefore represents the cap. On the other hand, because it is an unsecured loan the potential loss for the investor is 100%.
 
 **Implications of the Business Model findings on the EDA and predictive modeling:** the main driver to the future returns by investors are determined by limiting credit losses. The overall distributions of credit losses has a fat, left-tail distribution.  The maximum return is capped when the loan is made but the actual return can be -100%.  In addition, due to the nature of the credit market, instead of paying 25 % and then default, it makes more sense for the borrowers to default on the whole amount, which explains the shape of the fat tail.
 
-**Anti-Discriminatory Behavior:** In addition to the above we note that LC paid a class action settlement lawsuit of 77.3M$ in Q4 2017. This represented 50% of revenue for that quarter. We have not yet been able to get sufficient details regarding this lawsuit to understand whether it is related to discriminatory practices.  Our investigation is ongoing.
+### Anti-Discriminatory Behavior:
+In addition to the above we note that LC paid a class action settlement lawsuit of 77.3M$ in Q4 2017. This represented 50% of revenue for that quarter. We have not yet been able to get sufficient details regarding this lawsuit to understand whether it is related to discriminatory practices.  Our investigation is ongoing.
 
 Another anti-discrimination investigation is related to the zip code. We want to check the whether the percentage of the loan lending has the location bias (rich neighborhood verses some area which was weakened by the Economic Depression )
