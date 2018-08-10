@@ -28,6 +28,12 @@ Only a few of the features had significant missing data. We had two options when
 
 * DTI (Debt-to-Income) - when missing, we assumed the average, following logic similar to annual income.
 
+### Outliers
+
+To deal with outliers, we only considered complete loans that were either paid off or charged off. Furthermore, we filterd loans that were shorter than 60 days. These were special situations and we believed they would skew the data. In addition, loans with an APY greater than 1 were also eliminated because these were truly exceptional situtations probably due to bad data.
+
+Still, as shown in the exploratory analysis, there were numerous outliers in the positive end. Any loan with an APR greater that 0.25 is due to both a high interest rate and high fees (late fees, etc) that can sometimes drive the cost of the loan up significantly. We decided to keep these types of loans because they represent highly risky but lucrative loans.
+
 ### Design Matrix
 
 We included in our design matrix only those features that were available to investors on the Lending Clib web site. These features were scaled to numbers from 0 to 1 using MinMaxScaler. In addition, we also tried to standardize them ((x-mean) / stddev) but this did not yield better results. Categorical values such as home ownership and income validation were encoded with one-hot-encoding.
