@@ -3,7 +3,6 @@ layout: page
 title: Data Wrangling
 permalink: /menu1/
 ---
-### Contents
 {:.no_toc}
 *  
 {: toc}
