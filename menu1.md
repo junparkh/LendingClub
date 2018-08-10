@@ -75,6 +75,58 @@ Completed Loans: we assigned &quot;good&quot; to those loans which were fully pa
 
 We hoped that this reduced parametric subset would allow us to run quicker models.
 
+**Business Model Update**** :**
+
+Following a in depth review of the LendingClub (LC) website as well as an analysis of their past two 10K submissions which are available on the SEC&#39;s Edgar portal (see references) our understanding of the overall business model has evolved considerable.
+
+It makes sense to discuss the mechanics of how the actual business works so that we have both the nomenclature and mechanics clear.
+
+The overall LC business model works as follows:
+
+|   | Example | Comment |
+| --- | --- | --- |
+|  (a)Fees paid by Borrower to LC |   | Not yet clear how these fees are structured but they are 4x as large as the LC Investor fee. Source:10K  |
+|   (b)Gross interest paid by Borrowed | 15%   | Assume a 10,000 loan this would be 15% per annum. This is a function of the credit risk of the borrower and determined by LC. Higher credit risk means higher gross interest.  |
+|  (c)Fees paid by Investor to LC | 1% | Paid on any payments (interest or principal) made by the borrower.   |
+|  (d)Net Credit Costs | 9% | High due to the unsecured nature of the credit. Very difficult to collect against defaulters.  |
+|  (e)Net Investor returns  | 5% | (b) – (c) – (d) = (e) |
+
+**Comments** :
+
+**(a):  Fees paid by Borrows to LC**: Most of LCs revenues come from fees paid by the borrower to LC rather than from the fees paid by investors.  Q4 2017 revenues were 121M$ from transaction and 24M$ from investor fees. LC also collects additional fees during any work-out loan cases, however, the total value of these fees was 1.4M$ for the same quarter so less than 2% of revenues.
+
+**(b) &amp; (d) Gross interest paid by the borrower and Net Credit Costs**: **Prior** to being offered to investors individual loan applications are screened and given a credit score.  Some loans are rejected by LC outright and not offered to investors.  Of those loans offered to investors, the gross interest rate charged is set based on the creditworthiness of the borrower. LC, therefore, has already used an algorithm to assign gross interest charges to a borrower before these loans are seen by investors. &quot;Is this algorithm accurate?&quot;, will be a key aspect of our model.
+
+How much should additional interest be a charge to compensate for reduced credit-worthiness?  An example is useful at this point to illustrate the fat-tailed nature of the loss distribution function often found in finance.  (See references – Nassim Taleb).
+
+**Example:**
+
+- 3-year loan;
+- 36 equal payments of interest and principal
+- Final payment = 1/36 of the total loan
+- &quot;Excellent Credit&quot; has 100% chance of repaying the loan
+- &quot;Poor Credit&quot; defaults 50% of the time after making 18 months of payment. No loan recover is made
+
+|   | **Excellent Credit** | **Poor Credit** |
+| --- | --- | --- |
+| (e) Desired return | 5% | 5% |
+| (d) Net Credit Costs (\*) | 0% | 25% |
+| (c) Investor fee to LC | 1% | 1% |
+| (b) Gross Interest Rate Required | 6% | 31% |
+
+To earn the same investment return from the poor credit as from the excellent credit the gross interest charged would need to be 31% vs 6% respectively.  This is driven by the fact that 50% of the time there is a 50% loss of principal for the poor credit risks. Therefore, over the course of 54 payments (36 payments 50% of the time, and 18 payments 50% of the time until default) sufficient additional income needs to be generated to cover the 5000$ principal loss that occurs 50% of the time.
+
+(c) Fee paid by Investor to LC. This fee is not affected by credit worthiness as it is only collected in the event a payment is made
+
+(e) Each investor has their own targeted returns, however, for simplicity, we have used the examples given on the Investor video provided by LC = 5%.
+
+**Summary of Findings – Caps, and Floors** : Each loan tranche that the investor funds have an implicit capped return, i.e. the borrower agrees to the loan with a fixed interest rate which cannot be increased over the life of the loan. This is the maximum return that the investor can make and therefore represents the cap. On the other hand, because it is an unsecured loan the potential loss for the investor is 100%.
+
+**Implications of the Business Model findings on the EDA and predictive modeling:** the main driver to the future returns by investors are determined by limiting credit losses. The overall distributions of credit losses has a fat, left-tail distribution.  The maximum return is capped when the loan is made but the actual return can be -100%.  In addition, due to the nature of the credit market, instead of paying 25 % and then default, it makes more sense for the borrowers to default on the whole amount, which explains the shape of the fat tail.
+
+**Anti-Discriminatory Behavior:** In addition to the above we note that LC paid a class action settlement lawsuit of 77.3M$ in Q4 2017. This represented 50% of revenue for that quarter. We have not yet been able to get sufficient details regarding this lawsuit to understand whether it is related to discriminatory practices.  Our investigation is ongoing.
+
+Another anti-discrimination investigation is related to the zip code. We want to check the whether the percentage of the loan lending has the location bias (rich neighborhood verses some area which was weakened by the Economic Depression )
 
 ## Exploratory Data Analysis
 
