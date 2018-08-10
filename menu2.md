@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Discrimination
+title: EDA & Discrimination
 permalink: /menu2/
 ---
-## What does best in class Credit Scoring look like?
+## Discriminatory Behaviour
 
 Studies show that discrimination against African American and Latino burroughs is a large problem.
 
