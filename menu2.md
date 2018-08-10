@@ -4,7 +4,15 @@ title: EDA
 permalink: /menu2/
 ---
 ### EDA
+Completed Loan: Repaid as Share of Total Funded
 
+APY Histogram
+
+Distribution of APY by Year
+
+Profit Loss by LendingClub Credit Score
+
+Predictors Correlation
 
 ### Discriminatory Behaviour
 
@@ -23,3 +31,11 @@ Another possible area of concern is self-discrimination, where potential minorit
 It is worth noting the recent and ongoing litigation cases against Lending Club which, in our view, raise concerns about whether this company is improving the fairness of lending.  In Q1 2018 Lending Club settled a class action suit that had been brought against them by their own shareholders.  They settled for a total of 125M$.  Of this total, 77.3M$ is to be paid directly by the company and the remainder will be covered by insurance. The basis of the lawsuit was that Lending Club had, falsified the data related to certain loans and that this had inflated the value of the stock price.
 
 There is another current class action lawsuit against Lending Club from borrowers who are claiming that LendingClub essentially extracted far more in fees than had been agreed.  Certainly, the fact that fees paid by borrowers are about 4 times the fees paid by investors is not well disclosed on their website.
+
+Proportion of Non-White by State
+
+Proportion of Bad Loans by State
+
+Funded Loans per Capital by State
+
+Mean APY by State
