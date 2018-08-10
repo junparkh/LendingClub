@@ -127,11 +127,3 @@ To earn the same investment return from the poor credit as from the excellent cr
 **Anti-Discriminatory Behavior:** In addition to the above we note that LC paid a class action settlement lawsuit of 77.3M$ in Q4 2017. This represented 50% of revenue for that quarter. We have not yet been able to get sufficient details regarding this lawsuit to understand whether it is related to discriminatory practices.  Our investigation is ongoing.
 
 Another anti-discrimination investigation is related to the zip code. We want to check the whether the percentage of the loan lending has the location bias (rich neighborhood verses some area which was weakened by the Economic Depression )
-
-## Exploratory Data Analysis
-
-
-### Histogram
-
-
-### Scatter-matrix
