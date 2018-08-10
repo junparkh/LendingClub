@@ -9,8 +9,7 @@ permalink: /menu2/
 
 ### EDA
 Completed Loan: Repaid as Share of Total Funded
-![Image 1](/image/Net_CashFlow_By_Year.png){:class="img-responsive"}
-![Image 1](/image/Net_CashFlow_By_Year.png){:height="200%" width="200%"}
+![Image 1](/image/Net_CashFlow_By_Year.png = 100x300)
 
 APY Histogram
 ![Image 2](/image/APY_histogram.png)
