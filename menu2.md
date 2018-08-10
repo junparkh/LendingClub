@@ -47,4 +47,4 @@ Funded Loans per Capital by State
 ![Image 8](/image/Funded Loans per Capita per State.png)
 
 Mean APY by State
-![Image 9](/image/Mean APY per State.png)
+![Image 9](/image/Mean APY Per State.png)
