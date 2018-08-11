@@ -8,23 +8,23 @@ permalink: /menu2/
 {: toc}
 
 ### EDA
-Completed Loan: Repaid as Share of Total Funded
+#### Completed Loans
 
 ![Image 1](/image/Net_CashFlow_By_Year.png)
 
-APY Histogram
+#### APY Distribution
 
 ![Image 2](/image/APY_histogram.png)
 
-Distribution of APY by Year
+#### APY Distribution by Year
 
 ![Image 3](/image/Distribution_of_APY_by_year.png)
 
-Profit Loss by LendingClub Credit Score
+#### Profitability by LendingClub Credit Score
 
 ![Image 4](/image/Profit_loss_by_creditscore.png)
 
-Predictors Correlation
+#### Correlation of Predictors
 
 ![Image 5](/image/Predictors_Correlations.png)
 
@@ -46,18 +46,18 @@ It is worth noting the recent and ongoing litigation cases against Lending Club 
 
 There is another current class action lawsuit against Lending Club from borrowers who are claiming that LendingClub essentially extracted far more in fees than had been agreed.  Certainly, the fact that fees paid by borrowers are about 4 times the fees paid by investors is not well disclosed on their website.
 
-Proportion of Non-White by State
+#### Proportion of Non-White Population by State
 
 ![Image 6](/image/Proportion of Non White Per State.png)
 
-Proportion of Bad Loans by State
+#### Proportion of Bad Loans by State
 
 ![Image 7](/image/Proption of Bad Loans Per State.png)
 
-Funded Loans per Capital by State
+#### Funded Loans per Capital by State
 
 ![Image 8](/image/Funded Loans per Capita per State.png)
 
-Mean APY by State
+#### Mean APY by State (LendingClub)
 
 ![Image 9](/image/Mean APY Per State.png)
