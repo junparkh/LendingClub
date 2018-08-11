@@ -27,8 +27,8 @@ We concentrated data cleansing activities within the file Data\_cleansing.ipynb.
 #### (1) Credit-Worthiness 
 Some of the key metrics needed to be adjusted to allow the dates to show up as parametric variables. These included:
 
-- Zip code: We were provided with a three digit zip code which was the extent of our demographic data. We created a function &quot;extract\_number&quot; which pulled the Zip Code from the data;
-- Credit History: The timespan from the first credit line application until today represents the length of the applicant&#39;s activities within the credit scoring system. In general, longer credit histories are viewed as better risks;
+- Zip code: We were provided with a three digit zip code which was the extent of our demographic data. We created a function &quot;extract\_number&quot; which extracted the Zip Code from the data;
+- Credit History: The timespan from the first credit application until today represents the length of time that the applicant has been active within the credit scoring system. In general, longer credit histories are viewed as better risks;
 - Employment Length: Data needed to be cleansed to allow it to be continuous. Employment length is typically seen as one of the more important indicators of creditworthiness;
 - Annual Income: Obviously an important credit score indicator. However, from an investor point of view we would prefer that the applicant did not repay his or her loan early. We imputed the missing values for this predictor using the mean; and
 - Credit Score: We turned the A1, B2 etc credit scores into a linear/ordinal predicator and assigned it a score from 0.0 (A1 - the best) to 6.8 (G5 - the worst). We created a function &quot;subgrade\_score&quot; which performed this parametrization of the credit score variable.
@@ -37,8 +37,8 @@ Some of the key metrics needed to be adjusted to allow the dates to show up as p
 There were a number of issues regarding the loan dates. In particular, we needed to understand which loans were actually completed and which were still current. We decided to exclude the current loans from our model. A couple of the key parameters are worth discussing:
 
 - Last\_pymnt\_date: this refers strictly to the last payment made rather than the date that the last payment of the loan is due. To be clear, if a loan was made in Month=1 and had a term of 36 months then the final loan payment would be due in Month=36. If the current month were Month=10 and the most recent payment had been made then the parameter last\_pymnt\_date would record 10 rather than 36;
-- Issue date: refers to the start date of the loan or when the money was drawn down;
-- Term\_months: refers to the length of the loan assuming that all payments are successfully made and the loan reaches its natural end point;
+- Issue date: refers to the start date of the loan or when the money was drawn down; and
+- Term\_months: refers to the length of the loan assuming that all payments are successfully made and the loan reaches its natural end point.
 
 #### (3) Loan Profitability 
 This was by far the most difficult metric to analyse. There is a saying in the finance community that, &quot;you cannot eat APY&quot;.  This refers to the fact that if the APY (Annual Percentage Yield) charged on a loan is very high but does not last very long then you can have exceptionally large APY but no nominal return. An example serves to illustrate this point:
