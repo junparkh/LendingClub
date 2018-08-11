@@ -106,6 +106,8 @@ Thus, the best model was a neural network model that selected loans where the pr
 
 As mentioned earlier, we need to perform further optimization of hyperparameters for the most promising models by creating a separate tuning data set. In addition, cross validation needs to be performed to ensure reliable results.
 
+We would have liked to have run the model with data greater than 36 months. This would have excluded the 2016, 2017 and 2018 data even if the loan was completed. It is clear now that these completed loans contained too heavy a weighting of bad loans this is due to the fact that a 36 months loan cannot be a completed="good loan" before the 36 months is up; whereas, a bad loan can become bad more quickly.
+
 One thing that stood out was that most models did somewhat worse than the average return. Even models where the R^2 and accuracy were similar for both the training and testing set would often perform worse than average. This was counter-intuitive and suggest serious problem with either the data or the model. Unfortunately, we were unable to fully explore the reasons for this. One posibility is that the train/test split needs to be perfomed differently. Another is overfitting.
 
 Beacause APY can be negative, which may confuse the models, our plan was to create models using 1+APR to eliminate negative numbers. Another plan was using the log of the APY, as in "1/log(1+APY)", to penalize negative APYs. Or even 1+log(1/(1 + APR)), which would have smaller numbers for better loan choices, while still penalizing bad loans. These sorts of modifications would have created significantly different models that may have worked better. The biggest problem with the models was that a few bad loans dispropotionately effected the return.
