@@ -16,11 +16,11 @@ Debt returns are not symetrical because profits are limited, but losses are not.
 
 Lending Club's average return is -2%. That is, if you choose loans at random, you will expect to lose 2% of your money per year. On the other hand, US Treasury bonds are yielding around 2.45%. A Treasury bond is a risk-free investment that, barring a collapse of the US Government, will get rapaid. Thus any investment must be able to return more than the basic 2.45% yield to be worth doing because otherwise you would just invest in Treasury bonds. 
 
-We created numerous simmple models to predict superlative loans. Of these, the best model was a neural network model that selected loans where the probability estimates were over 0.9. This yielded returns close to 5% on the test data. This is quite a bit above average and also above the US Treasury baseline.
+We created numerous simple models to predict superlative loans. Of these, the best model was a neural network model that selected loans where the probability estimates were over 0.9. This yielded returns close to 5% on the test data. This is quite a bit above average and also above the US Treasury baseline.
 
 # Accuracy not a good measure
 
-If given more time, we would have explored different models that optimize for things other than accuracy. Accuracy is not a good measure because a few bad loans can quickly wipe out any profits. Thus, even at 99% accuracy for predicting reliably good loans, you might still lose money. We could have created models that optimize on expected return. In addition, our choice of APR as our outcome variable may not have been ideal. A measure that further penalizes bad loans may work better.
+If given more time, we would have explored different models that optimize for things other than accuracy. Accuracy is not a good measure because a few bad loans can quickly wipe out any profits. Thus, even at 90% accuracy for predicting reliably good loans, you might still lose money. We could have created models that optimize on expected return. In addition, our choice of APY as our outcome variable may not have been ideal. A measure that penalizes bad loans may work better.
 
 # Validation and Hyperparameter Optimization
 

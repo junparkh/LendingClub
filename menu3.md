@@ -36,7 +36,7 @@ Still, as shown in the exploratory analysis, there were numerous outliers in the
 
 ### Design Matrix
 
-We included in our design matrix only those features that were available to investors on the Lending Club web site. We tried to standardize them ((x-mean) / stddev) but this did not improve our results. Categorical values such as home ownership and income validation were encoded with one-hot-encoding.
+We included in our design matrix only those features that were available to investors on the Lending Club web site. The data was normalized to the range 0 to 1. We tried to standardize them ((x-mean) / stddev) but this did not improve our results. Categorical values such as home ownership and income validation were encoded with one-hot-encoding.
 
 ### Objective
 
@@ -74,19 +74,25 @@ As a consequence, we were unable to optimize the hyperparameters for promising m
 
 We examined a few models to determine whether a loan would make money or lose money. That is, rather than picking a target APY, merely try to predict APY >= 0. In general these were no more successful than trying predict which loans would meet a minimum target return.
 
-### Exploring: maximize profit
+### Models to maximize profit
 
-To start, we created several baseline models to see if which algorithms, if any, were worth exploring.
+To start, we created several basic models to see if which algorithms, if any, were worth exploring.
+
+#### Regression models
 
 Regression models were unable to accurately predict (based on R^2) a numerical APR. Linear regressions, LR with lasso, random forest regression, ada boost regression all yielded very small R^2 and expected returns either close to 0 or negative. These models were unable to make many good predictions.
 
+#### Classification models
+
 Classification models were also not very successful. Many of these models generated large accuracy scores, but fared badly when an expected return was calculated. Many models fared only slightly better than the overall average return -0.024. This was unexpectedly bad performance. Unfortunately, we ran out of time before we could fully explore this. One theory is that the models tended to find unusual loans. Usually, these are high returns, but some times, they are also exceptionally bad. Bad loans are far worse than good loans, because you can loose all your money, whereas your gains are limited by the interest rate.
 
-Logistic regression had a train and test accuracy around 0.7, but yielded an average APY of -0.08. 
+#### Exploration of models
+
+Logistic regression had a train and test accuracy around 0.7, but yielded an average APY of -8%. 
 
 We fit several random forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -0.05.
 
-Using the same random forest model, rather than looking at the predictions, we looked at the probabilities predicted. We chose only those loans where the probability was greater than 0.9. That stretegy select 8% of returns and yielded an APY of 0.028, which is better than average.
+Using the same random forest model, rather than looking at the predictions, we looked at the probabilities predicted. We chose only those loans where the probability was greater than 0.9. That stretegy selected 8% of loans and yielded an APY of 2.8%, which is better than average.
 
 Random forest regression did not yield better results. Adaboost regressor was unable to create a working model.
 
@@ -96,9 +102,9 @@ Next, we considered the use of polynomial factors. In order to limit the complex
 
 A single decision tree, linear discriminant analysis and quadratic discriminant analysis likewise did not yield good results.
 
-A neural network model did not yield good results on its own. However, when we looked at the probabilities the results were more promising. A strategy of picking stocks where the probability estimates were over 0.9 yielded returns of 0.05 on the test data, which is significantly higher than average and the best results so far.
+A neural network model did not yield good results on its own. Our basic model architecture was composed of 5 fully connected layers with 128, 64, 32, 8 and 1 nodes. We did not have time to add dropout and other types of layers, although it may improve perfomance. Using the model's prections did not yield promising results. However, when we looked at the probabilities, the results were more promising. A strategy of picking loans where the probability estimates were over 0.9 yielded returns of 5% on the test data, which is significantly higher than average and the best results so far.
 
-Lastly, we created a stacking model combining probability estimates of the logistic, random forest and neural network models created earlier. A strategy of picking only those loans where all three models agreed with probability of more than 0.8 yieled returns of 0.02.
+Lastly, we created a stacking model combining probability estimates of the logistic, random forest and neural network models created earlier. A strategy of picking only those loans where all three models agreed with probability of more than 0.8 yieled returns of 2%.
 
 Thus, the best model was a neural network model that selected loans where the probability estimates were over 0.9. This yielded returns close to 0.05 on the test data.
 
@@ -110,10 +116,10 @@ We would have liked to have run the model with data greater than 36 months. This
 
 One thing that stood out was that most models did somewhat worse than the average return. Even models where the R^2 and accuracy were similar for both the training and testing set would often perform worse than average. This was counter-intuitive and suggest serious problem with either the data or the model. Unfortunately, we were unable to fully explore the reasons for this. One posibility is that the train/test split needs to be perfomed differently. Another is overfitting.
 
-Beacause APY can be negative, which may confuse the models, our plan was to create models using 1+APR to eliminate negative numbers. Another plan was using the log of the APY, as in "1/log(1+APY)", to penalize negative APYs. Or even 1+log(1/(1 + APR)), which would have smaller numbers for better loan choices, while still penalizing bad loans. These sorts of modifications would have created significantly different models that may have worked better. The biggest problem with the models was that a few bad loans dispropotionately effected the return.
+Beacause APY can be negative, which may confuse the models, our plan was to create models using different calculations to eliminate negative numbers, such as 1+APR. Another plan was using the log of the APY, as in "1/log(1+APY)", to penalize negative APYs. Or even 1+log(1/(1 + APR)), which would have smaller numbers for better loan choices, while still penalizing bad loans. These sorts of modifications would have created significantly different models that may have worked better. The biggest problem with the models was that a few bad loans dispropotionately effected the return and so penalizing bad loans would have been helpful.
 
 Another question that we did not have time to investigate is how large our investment portfolio must be to reduce volatility. Even if predictions are on average good, it's possible that the average only holds over very large numbers of loans. If you have a smaller loan portfolio, the returns might be more volatile and unpredictable. Cross validation of the models using different sizes of randomized loan portfolios would help address this question.
 
-### Portfolio(size) and discrimination
+### Portfolio discrimination
 
 Although we did collect data on demographics, we were unable to join to our data due to time constraints. Our plan was to see if our models tended to pick loans in locations that were primarily non-minority and then explore why the models behaved as they did. Unfortunately, time constraints did not allow this. Even though this would not be proof of discrimination, it might suggest areas of further exploration.
