@@ -6,7 +6,7 @@ permalink: /menu4/
 
 # Final Solution
 
-The best model was a simple neural network model. We selected loans where the probability estimates of the network were over 0.9. This yielded returns close to 5% on the test data. If we had more time, there are numerous ways to improve upon this model which are explained in other sections.
+The best model was a simple neural network model. We selected loans where the probability estimates of the network were over 0.9. This yielded returns close to 5% on the test data. In addition, a Random Forest model with Regression also scored about 6% on its portfolio. If we had more time, there are numerous ways to improve upon this model which are explained in other sections. Both of these models scores significantly better than the basic option of only selecting A credit borrowers which would have generated less than a 3% return.
 
 # Debt Returns Not Symetrical
 
