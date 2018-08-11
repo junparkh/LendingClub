@@ -8,13 +8,13 @@ permalink: /menu3/
 *  
 {: toc}
 
-## Overall Exploration Strategy
+### Overall Exploration Strategy
 
 Our overall goal was to create a model that selects a small subset of loans to invest in and maximizes the overall APR of the portfolio. There are many ways to achieve this but for the purposes of this class, we decided to create models based on a consistent design matrix that would allow us to predict whether a loan is worth investing in or not by looking at the APY of the loan.
 
-## Data Preparation 
+### Data Preparation 
 
-### Missing Data
+#### Missing Data
 
 Only a few of the predictors that we had selected had significant missing data. We had two options when dealing with this problem. Either eliminate the loans, or impute a value. We decided to impute values whenever possible in order to make sure that we were not systematically eliminating loans from our analysis.
 
@@ -28,17 +28,17 @@ Only a few of the predictors that we had selected had significant missing data. 
 
 * DTI (Debt-to-Income) - when missing, we assumed the average, following logic similar to annual income.
 
-### Outliers
+#### Outliers
 
 To deal with outliers, we only considered complete loans that were either paid off or charged off. Furthermore, we filterd loans that were shorter than 60 days. These were special situations and we believed they would skew the data. In addition, loans with an APY greater than 1 were also eliminated because these were truly exceptional situtations probably due to bad data.
 
 Still, as shown in the exploratory analysis, there were numerous outliers in the positive end. Any loan with an APY greater that 0.25 is due to both a high interest rate and high fees (late fees, etc) that can sometimes drive the cost of the loan up significantly. We decided to keep these types of loans because they represent highly risky but lucrative loans.
 
-### Design Matrix
+#### Design Matrix
 
 We included in our design matrix only those features that were available to investors on the Lending Club web site. The data was normalized to the range 0 to 1. We tried to standardize them ((x-mean) / stddev) but this did not improve our results. Categorical values such as home ownership and income validation were encoded with one-hot-encoding.
 
-### Objective
+#### Objective
 
 We designated APY as our objective. The APY concept is covered earlier. In our analysis we define it as:
 
@@ -52,11 +52,11 @@ For categorical models, we designated a cutoff target APY. We created a binary c
 
 One problem with using APY is that it can be negative. This may cause problems in the models because negative values require negative coefficients. In the *Future Exploration* section below we discuss various ways we were planning to deal with this.
 
-### Test / Train split
+#### Test / Train split
 
 For our initial model exploration, we split the entire data set into a training set and a test set. 75% of the data was used for training. 25% was used for testing. Our plan was to later tune model hyperparameters by creating three data set: Training, Tuning, Test. As explained later, we ran out of time to do this.
 
-## Accuracy vs APY
+### Accuracy vs APY
 
 The categorical models were optimized to maximize accuracy. But accuracy is not the best indicator of success because a few bad loans could easily wipe out any profits from good loans. For example, let's say we pick 10 loans: 9 of which return 7%, but one which is a total loss at -100%. That would be 90% accuracy. But still a return of -37%, which is pretty bad.
 
@@ -64,17 +64,17 @@ To account for this problem, we created an `evaluate_strategy` function which wi
 
 A better solution would be to optimize for average APY instead of accuracy. However, we ran out of time before we were able to try this.
 
-## Overall structure of our method for determining which loans we should take:
+### Overall structure of our method for determining which loans we should take:
 
 Our plan was to create a number of different models to see which ones were most promising and then exploring these in greater detail. Unfortunately, time constraints limited our ability to explore models in depth. 
 
 As a consequence, we were unable to optimize the hyperparameters for promising models. Our plan was to create three data sets (or more as needed): training, tuning, testing. We would then tune the hyperparameters based on the results on the tuning set. Additionally, we had hoped to do cross validation to analyze the stability of our parameters. This is an area for future exploration.
 
-### Loss prevention
+#### Loss prevention
 
 We examined a few models to determine whether a loan would make money or lose money. That is, rather than picking a target APY, merely try to predict APY >= 0. In general these were no more successful than trying predict which loans would meet a minimum target return.
 
-### Models to maximize profit
+#### Models to maximize profit
 
 To start, we created several basic models to see if which algorithms, if any, were worth exploring.
 
@@ -108,7 +108,7 @@ Lastly, we created a stacking model combining probability estimates of the logis
 
 Thus, the best model was a neural network model that selected loans where the probability estimates were over 0.9. This yielded returns close to 0.05 on the test data.
 
-## Future Exploration
+### Future Exploration
 
 As mentioned earlier, we need to perform further optimization of hyperparameters for the most promising models by creating a separate tuning data set. In addition, cross validation needs to be performed to ensure reliable results.
 
@@ -120,6 +120,6 @@ Beacause APY can be negative, which may confuse the models, our plan was to crea
 
 Another question that we did not have time to investigate is how large our investment portfolio must be to reduce volatility. Even if predictions are on average good, it's possible that the average only holds over very large numbers of loans. If you have a smaller loan portfolio, the returns might be more volatile and unpredictable. Cross validation of the models using different sizes of randomized loan portfolios would help address this question.
 
-### Portfolio discrimination
+#### Portfolio discrimination
 
 Although we did collect data on demographics, we were unable to join to our data due to time constraints. Our plan was to see if our models tended to pick loans in locations that were primarily non-minority and then explore why the models behaved as they did. Unfortunately, time constraints did not allow this. Even though this would not be proof of discrimination, it might suggest areas of further exploration.
