@@ -100,12 +100,12 @@ The overall LC business model works as follows:
 
 **(a):  Fees paid by Borrows to LC**: Most of LCs revenues come from fees paid by the borrower to LC rather than from the fees paid by investors.  Q4 2017 revenues were 121M$ from transaction and 24M$ from investor fees. LC also collects additional fees during any work-out loan cases, however, the total value of these fees was 1.4M$ for the same quarter or less than 2% of revenues.
 
-**(b) &amp; (d) Gross interest paid by the borrower and Net Credit Costs**: **Prior** to being offered to investors individual loan applications are screened and given a credit score.  Some loans are rejected by LC outright and not offered to investors.  Of those loans offered to investors, the gross interest rate charged is set based on the creditworthiness of the borrower. LC, therefore, has already used an algorithm to assign gross interest charges to a borrower before these loans are seen by investors. &quot;Is this algorithm accurate?&quot;, will be a key aspect of our model.
+**(b) &amp; (d) Gross interest paid by the borrower and Net Credit Costs**: Prior to being offered to investors individual loan applications are screened and given a credit score.  Some loans are rejected by LC outright and not offered to investors.  Of those loans offered to investors, the gross interest rate charged is set based on the creditworthiness of the borrower. LC, therefore, has already used an algorithm to assign gross interest charges to a borrower before these loans are seen by investors. &quot;Is this algorithm accurate?&quot;, will be a key aspect of our model.
 
-How much additional interest should be applied to compensate for reduced credit-worthiness?  An example is useful at this point to illustrate the fat-tailed nature of the loss distribution function often found in finance.  (See references – Nassim Taleb).
+How much additional interest should be applied to compensate for reduced creditworthiness?  An example is useful at this point to illustrate the fat-tailed nature of the loss distribution function often found in finance.
 
-#### Example Loan
-Assumptions:
+#### Example Loan (Illustrative)
+**Assumptions:**
 - 3-year loan;
 - 36 equal payments of interest and principal, i.e. no final bullet payment
 - Final payment = 1/36 of the total loan
