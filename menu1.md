@@ -132,5 +132,5 @@ To earn the same investment return from the poor credit as from the excellent cr
 #### Summary of Findings – Caps, and Floors
 Each loan tranche that the investor funds have an implicit capped return, i.e. the borrower agrees to the loan with a fixed interest rate which cannot be increased over the life of the loan. This is the maximum yield that the investor can earn and therefore represents the cap. On the other hand, because it is an unsecured loan the potential loss for the investor is 100%.
 
-#### Implications for Modeling: 
+#### Implications for Modeling
 The main driver of future returns is ensuring that credit losses are minimised. The overall distributions of credit losses has a fat, left-tail distribution.  The maximum return is capped when the loan is made but the actual return can be -100%.  In addition, due to the nature of the credit market, instead of paying 25 % and then default, it makes more sense for the borrowers to default on the whole amount, which explains the shape of the fat tail. The reason for this is that the borrower will have a delinquent credit record whether they repay 25% of 0%. There is therefore often not much more to lose by defaulting completely from the loan.
