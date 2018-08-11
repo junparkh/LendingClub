@@ -118,7 +118,24 @@ Lastly, we created a stacking model combining probability estimates of the logis
 
 #### Best model
 
-The best model was a neural network model with 5 fully-connected layers that selected loans where the probability estimates were over 0.9. This yielded returns close to 5% on the test data.
+The two best models were a neural network model with 5 fully-connected layers that selected loans where the probability estimates were over 0.9. This yielded returns close to 5% on the test data. A Random Forest Regression model also scored 6% on the portfolio.  We would have benefited from more time to investigate these two well performing models more thoroughly.
+
+| Model | APY of Strategy |
+| --- | --- |
+| Linear Regression | -0.024 |
+| Linear Regression (Lasso) | -0.024 |
+| LogReg | -0.024 |
+| Random Forest | -0.024 |
+| Random Forest Regression | **0.060** |
+| AdaBoost Regressor | -0.011 |
+| AdaBoost Classifier | -0.105 |
+| AdaBoost Classifier with RF | -0.030 |
+| Polynomial | -0.022 |
+| Single Decision Tree | -0.030 |
+| LDA | -0.089 |
+| QDA | -0.062 |
+| NN | **0.050** |
+| KNN | -0.027 |
 
 ### Future Exploration
 
