@@ -6,11 +6,11 @@ permalink: /menu1/
 {:.no_toc}
 *  
 {: toc}
-### Description of Data:
+### Description of Data
 
 We downloaded the raw data from the Lending Club website. The data was structured as a large.csv.  Data was provided related to the unfunded and the funded loans. Unfortunately there was very little data provided related to the actual demographics of the borrowers.  This made performing any analyses related to either discrimination or preferential treatment impossible.
 
-#### Overview of the raw data:
+#### Overview of the Raw Data
 There were 1,873,290 records in the data file covering a span of almost 11 years of data.  The funded data relates to loans which have been approved by the LendingClub and then funded by investors.  The unfunded data (&#39;rejected&#39;) relates to borrowing applications which had been approved by LendingClub and assigned a credit rating but not funded by investors.  The critical part of our modeling would focus on whether loan applications which were funded were actually repaid and, if they were repaid, the overall level of interest earned on these loans.  Unfortunately, the unfunded data was of little help in determining profitability as there is then no record of whether these loan applicants would or would not have repaid their loans.
 
 [If we had been able to pursue the discrimination issue further then the unfunded data would have been a potentially interesting source of information.  We believe that the most likely point where discrimination might take place would be at the point between &quot;approved by LendingClub&quot; and &quot;funded by investors&quot;.   That said, given LendingClub&#39;s poor track record with respect to data transparency there would also have been opportunities for discrimination in the initial phase from applicant to approval by LendingClub. For more details on the ongoing litigation against Lending Club please see the section on discrimination.]
@@ -24,7 +24,7 @@ We concentrated the data wrangling activities within the file Data\_cleansing.ip
 4. Selecting the predictor sub-set; and
 5. Saving the data as a condensed bz2 file
 
-#### (1) Credit-worthiness: 
+#### (1) Credit-worthiness 
 some of the key metrics needed to be adjusted to allow the dates to show up as parametric variables. These included:
 
 - Zip code: We were provided with a three digit zip code which was all we had to go on from a demographic point of view. We created a function &quot;extract\_number&quot; which pulled the Zip Code from the data;
@@ -33,14 +33,14 @@ some of the key metrics needed to be adjusted to allow the dates to show up as p
 - Annual Income: Obviously an important credit score indicator. However, we would prefer that the applicant did not repay his or her loan early. We imputed the missing values for this predictor using the mean; and
 - Credit Score: We turned the A1, B2 etc credit scores into a linear/ordinal predicator and assigned it a score from 0.0 (A1 - the best) to 6.8 (G5 - the worst). We created a function &quot;subgrade\_score&quot; which performed this parametrization of the credit score variable.
 
-#### (2) Loan Dates: 
+#### (2) Loan Dates 
 there were a number of issues around the loan dates. In particular, we needed to understand which loans were actually completed and which were still running. We decided to exclude the still running loans from our model. A couple of the key parameters are worth discussing:
 
 - Last\_pymnt\_date: this refers strictly the last payment made rather than the date that the last payment of the loan is due. To be clear, if a loan was made in Month=1 and had a term of 36 months then the final loan payment would be due in Month=36. If we were actually in Month 10 and the most recent payment had been made then the parameter last\_pymnt\_date would record 10 not 36;
 - Issue date: refers to the start date of the loan. When the money was drawn;
 - Term\_months: refers to the length of the loan assuming that all payments are successfully made;
 
-#### (3) Loan Profitability: 
+#### (3) Loan Profitability 
 this was by far the most difficult metric to analyse. There is a saying in the finance community that, &quot;you cannot eat APR&quot;.  This refers to the fact that if the APR (Annual Percentage Rate) charge on a loan is very high but does not last very long then you can have exceptionally large APR but no nominal return. An example serves to illustrate this point well:
 
 Loan 1 = 100$; Term = 1 month; APR = 313%.
@@ -53,7 +53,7 @@ Taking averages of APRs is therefore quite tricky. To facilitate our investment 
 
 Completed Loans: we assigned &quot;good&quot; to those loans which were fully paid-off.
 
-#### (4) Subset Public Data:   
+#### (4) Subset Public Data   
 Primarily due to lack of data we reduced the predictors from the original data to the following:
 
 - loan\_amnt
@@ -76,14 +76,14 @@ Primarily due to lack of data we reduced the predictors from the original data t
 - revol\_util\_perc: percentage of the revolving facility utilized e.g. a credit card line
 - total\_acc: the total number of credit lines in the borrower&#39;s account
 
-#### (5) Save Subset: 
+#### (5) Selected Predictors
 we then used this selected subset of parameters to create a new loan file and &quot;pickled&quot; it as analysis-predictors.bz2. The target data set (y) was saved as analysis-target.bz2).
 
 We hoped that this reduced parametric subset would allow us to run quicker models.
 
-### Business Model Update:
+### Business Model Update
 
-#### Mechanics of OnLine Lending:
+#### Mechanics of OnLine Lending
 Following a in depth review of the LendingClub (LC) website as well as an analysis of their past two 10K submissions which are available on the SEC&#39;s Edgar portal (see references) our understanding of the overall business model has evolved considerable.
 
 It makes sense to discuss the mechanics of how the actual business works so that we have both the nomenclature and mechanics clear.
@@ -106,7 +106,7 @@ The overall LC business model works as follows:
 
 How much should additional interest be a charge to compensate for reduced credit-worthiness?  An example is useful at this point to illustrate the fat-tailed nature of the loss distribution function often found in finance.  (See references – Nassim Taleb).
 
-#### Example Loan:
+#### Example Loan
 
 - 3-year loan;
 - 36 equal payments of interest and principal
@@ -127,7 +127,7 @@ To earn the same investment return from the poor credit as from the excellent cr
 
 (e) Each investor has their own targeted returns, however, for simplicity, we have used the examples given on the Investor video provided by LC = 5%.
 
-#### Summary of Findings – Caps, and Floors:
+#### Summary of Findings – Caps, and Floors
 Each loan tranche that the investor funds have an implicit capped return, i.e. the borrower agrees to the loan with a fixed interest rate which cannot be increased over the life of the loan. This is the maximum return that the investor can make and therefore represents the cap. On the other hand, because it is an unsecured loan the potential loss for the investor is 100%.
 
 **Implications of the Business Model findings on the EDA and predictive modeling:** the main driver to the future returns by investors are determined by limiting credit losses. The overall distributions of credit losses has a fat, left-tail distribution.  The maximum return is capped when the loan is made but the actual return can be -100%.  In addition, due to the nature of the credit market, instead of paying 25 % and then default, it makes more sense for the borrowers to default on the whole amount, which explains the shape of the fat tail.
