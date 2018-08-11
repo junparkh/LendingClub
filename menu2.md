@@ -60,7 +60,7 @@ There is another current class action lawsuit against Lending Club from borrower
 
 #### Fig 6: Proportion of Non-White Population by State
 
-![Image 6](/image/Proportion of Non White Per State.png)
+![Image 6](/image/Proportion of Non White By State.png)
 
 Figure 6 provides the non-White population per State for the whole of the continental U.S. as well as Hawaii and Alaksa. The states with the higher non-white populations are Mississippi, South Carolina, Hawaii and Alaska.  Our intention here was to correlate this data with demographic data from the LendingClub to see if there was any preliminary evidence of discrimination. 
 
@@ -72,13 +72,13 @@ Figure 7 takes this one step further by assessing the bad loans per state for al
 
 #### Fig 8: Funded Loans per Capital by State
 
-![Image 8](/image/Funded Loans per Capita per State.png)
+![Image 8](/image/Funded Loans per Capita by State.png)
 
 Finally, Figure 8 gives us loans per capita by State. Figures 6,7 and 8 give us a pretty good geographical picture or how LendingClub loans correlate by state and the concentration of the non-white population by state.
 
 #### Fig 9: Mean APY by State (LendingClub)
 
-![Image 9](/image/Mean APY Per State.png)
+![Image 9](/image/Mean APY by State.png)
 
 Figure 9 introduces profitability data into the geographic equation.
 
