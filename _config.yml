@@ -12,7 +12,7 @@ email4: siy422@g.harvard.edu
 
 
 description: > # this means to ignore newlines until "twitter_username:"
-    This is the final project for CS109A: Harvard University.
+    Final project for CS109A: Harvard University.
 remote_theme: jekyll/minima
 # social links
 # twitter_username: jekyllrb
