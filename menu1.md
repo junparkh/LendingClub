@@ -15,7 +15,7 @@ There were 1,873,290 records in the data file covering a span of almost 11 years
 
 [If we had been able to pursue the discrimination issue further then the unfunded data would have been a potentially interesting source of information.  We believe that the most likely point where discrimination might take place would be at the point between &quot;approved by LendingClub&quot; and &quot;funded by investors&quot;.   That said, given LendingClub&#39;s poor track record with respect to data transparency there would also have been opportunities for discrimination in the initial phase from applicant to approval by LendingClub. For more details on the ongoing litigation against Lending Club please see the section on discrimination.]
 
-### Data Wrangling
+### Data Cleansing
 We concentrated the data wrangling activities within the file Data\_cleansing.ipynb.  The data wrangling can be broken down into give different parts:
 
 1. Credit-worthiness;
