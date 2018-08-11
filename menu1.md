@@ -8,7 +8,7 @@ permalink: /menu1/
 {: toc}
 ### Description of Data
 
-We downloaded the raw data from the Lending Club website. The data was structured as a large.csv with about 1.8 millions rows.  Data was provided related to both the unfunded and the funded loans. Unfortunately, as already mentioned, there was very little data provided related to the actual demographics of the borrowers.  This made performing any analyses related to either discrimination or preferential treatment impossible.
+We downloaded the raw data from the Lending Club website. The data was structured as a large.csv with about 1.8 millions rows.  Data was provided for both the unfunded and funded loans. Unfortunately, as already mentioned, there was very little data provided related to the demographics of the borrowers.  This made performing analyses related to either discrimination or preferential treatment impossible.
 
 #### Overview of the Raw Data
 There were 1,873,290 records in the data file covering a timespan of 11 years.  The data in the &quot;funded&quot; file relates to loans which have been approved by LendingClub, assigned a credit score and then subsequently funded by investors.  The unfunded data (&#39;rejected&#39;) relates to borrowing applications which had been approved by LendingClub and assigned a credit score but not funded by investors.  The critical part of our modeling would focus on whether loan applications which were funded were actually repaid and, if they were repaid, the overall level of interest earned on these loans.  Unfortunately, the unfunded data was of little help in determining profitability as there is no subsequent record of whether these loan applicants would or would not have repaid their loans.
@@ -18,11 +18,11 @@ There were 1,873,290 records in the data file covering a timespan of 11 years.  
 ### Data Cleansing
 We concentrated data cleansing activities within the file Data\_cleansing.ipynb.  The data wrangling can be broken down into five different parts:
 
-1. Credit-worthiness;
-2. Loan Dates;
-3. Loans Profitability -\&gt; y;
-4. Selecting the predictor sub-set; and
-5. Saving the data as a .bz2 file
+1. Credit-Worthiness
+2. Loan Dates
+3. Loans Profitability
+4. Selected Predictors
+5. Cleaned File
 
 #### (1) Credit-Worthiness 
 Some of the key metrics needed to be adjusted to allow the dates to show up as parametric variables. These included:
@@ -53,7 +53,7 @@ Taking averages of APYs is therefore quite tricky. To facilitate our investment 
 
 Completed Loans: we assigned &quot;good&quot; to those loans which were fully paid-off.
 
-#### (4) Subset Public Data
+#### (4) Selected Predictors
 Primarily due to lack of data fields we were forced to reduce the predictors from the original data to the following 19 predictors:
 
 - loan\_amnt
