@@ -70,7 +70,7 @@ Primarily due to missing data fields we were forced to reduce the predictors fro
 - inq\_last\_6mths: whether there has been a credit inquiry in the past 6 months
 - mths\_since\_last\_delinq: months since the last delinquent payment
 - mths\_since\_last\_record: months since the last public record of credit history
-- pen\_acc: the number of open credit accounts in the borrower&#39;s credit file
+- open\_acc: the number of open credit accounts in the borrower&#39;s credit file
 - pub\_rec: Number of derogatory public records
 - revol\_bal: total credit – revolving balance (outstanding debt)
 - revol\_util\_perc: percentage of the revolving facility utilized e.g. a credit card line
