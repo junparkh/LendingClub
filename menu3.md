@@ -78,23 +78,29 @@ We examined a few models to determine whether a loan would make money or lose mo
 
 To start, we created several basic models to see if which algorithms, if any, were worth exploring.
 
-#### Regression models
+#### Regression models and interpretability
 
-Regression models were unable to accurately predict (based on R^2) a numerical APR. Linear regressions, LR with lasso, random forest regression, ada boost regression all yielded very small R^2 and expected returns either close to 0 or negative. These models were unable to make many good predictions.
+Our initial thought was that regression and logistic models would enable us to make better-than-average predictions and would point to the most important factors to consider. However, this proved elusive. 
+
+First, regression models were unable to accurately predict (based on R^2) a numerical APY. Linear regressions, LR with lasso, random forest regression, ada boost regression all yielded very small R^2 and expected returns either close to 0 or negative. These models were unable to make many good predictions.
+
+Second, the basic models of regression and logistic regression had wildly different coefficients and so it was difficult to find a pattern.
+
+Performing scatter diagrams did not yield much visual information beyond the obvious correlations: debt-to-income and annual income; interest rate and APY; APY and credit score.
+
+We created a linear regression model that fared badly. Random forest regression did not yield better results. Adaboost regressor was unable to create a working model.
 
 #### Classification models
 
-Classification models were also not very successful. Many of these models generated large accuracy scores, but fared badly when an expected return was calculated. Many models fared only slightly better than the overall average return -0.024. This was unexpectedly bad performance. Unfortunately, we ran out of time before we could fully explore this. One theory is that the models tended to find unusual loans. Usually, these are high returns, but some times, they are also exceptionally bad. Bad loans are far worse than good loans, because you can loose all your money, whereas your gains are limited by the interest rate.
+Classification models were also not very successful. Many of these models generated large accuracy scores, but fared badly when an expected return was calculated. Many models fared only slightly better than the overall average return -2.4%. This was unexpectedly bad performance. Unfortunately, we ran out of time before we could fully explore this. One theory is that the models tended to find unusual loans. Usually, these are high returns, but some times, they are also exceptionally bad. Bad loans are far worse than good loans, because you can loose all your money, whereas your gains are limited by the interest rate.
 
 #### Exploration of models
 
 Logistic regression had a train and test accuracy around 0.7, but yielded an average APY of -8%. 
 
-We fit several random forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -0.05.
+We fit several random forest models. The first model with limited nodes and branches had an R^2 of about 0.23 for both test and train data. However, the strategy had an average return of -5%.
 
 Using the same random forest model, rather than looking at the predictions, we looked at the probabilities predicted. We chose only those loans where the probability was greater than 0.9. That stretegy selected 8% of loans and yielded an APY of 2.8%, which is better than average.
-
-Random forest regression did not yield better results. Adaboost regressor was unable to create a working model.
 
 We created two adaboost classification models. The first did not use a base classifier. The second used random forest. Both were unable to yield positive returns.
 
@@ -102,11 +108,17 @@ Next, we considered the use of polynomial factors. In order to limit the complex
 
 A single decision tree, linear discriminant analysis and quadratic discriminant analysis likewise did not yield good results.
 
-A neural network model did not yield good results on its own. Our basic model architecture was composed of 5 fully connected layers with 128, 64, 32, 8 and 1 nodes. We did not have time to add dropout and other types of layers, although it may improve perfomance. Using the model's prections did not yield promising results. However, when we looked at the probabilities, the results were more promising. A strategy of picking loans where the probability estimates were over 0.9 yielded returns of 5% on the test data, which is significantly higher than average and the best results so far.
+#### Neural Network
+
+A neural network model did not yield good results on its own, but did when we looked at probability predictions. Our basic model architecture was composed of 5 fully connected layers with 128, 64, 32, 8 and 1 nodes. We did not have time to add dropout and other types of layers, although it may improve perfomance. Using the model's prections did not yield promising results. However, when we looked at the probabilities, the results were more promising. A strategy of picking loans where the probability estimates were over 0.9 yielded returns of 5% on the test data, which is significantly higher than average and the best results so far.
+
+#### Stacking model
 
 Lastly, we created a stacking model combining probability estimates of the logistic, random forest and neural network models created earlier. A strategy of picking only those loans where all three models agreed with probability of more than 0.8 yieled returns of 2%.
 
-Thus, the best model was a neural network model that selected loans where the probability estimates were over 0.9. This yielded returns close to 0.05 on the test data.
+#### Best model
+
+The best model was a neural network model with 5 fully-connected layers that selected loans where the probability estimates were over 0.9. This yielded returns close to 5% on the test data.
 
 ### Future Exploration
 
