@@ -66,7 +66,7 @@ Figure 6 provides the non-White population per State for the whole of the contin
 
 #### Fig 7: Proportion of Bad Loans by State
 
-![Image 7](/image/Proption of Bad Loans Per State.png)
+![Image 7](/image/Proportion of Bad Loans Per State.png)
 
 Figure 7 takes this one step further by assessing the bad loans per state for all credit within the U.S. Note that this is LendingClub data.
 
