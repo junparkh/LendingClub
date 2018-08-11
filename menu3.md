@@ -136,6 +136,7 @@ The two best models were a neural network model with 5 fully-connected layers th
 | QDA | -0.062 |
 | NN | **0.050** |
 | KNN | -0.027 |
+*Note: All of the results given above can be found in the ipynb notebook with the exception of the NN which was run separately.*
 
 ### Future Exploration
 
