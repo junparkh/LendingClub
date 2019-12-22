@@ -11775,7 +11775,10 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="TD-Reinforcement-Learning-and-Deep-Q-Learning">TD Reinforcement Learning and Deep Q-Learning<a class="anchor-link" href="#TD-Reinforcement-Learning-and-Deep-Q-Learning">&#182;</a></h1><h2 id="Background">Background<a class="anchor-link" href="#Background">&#182;</a></h2><p>Monte Carlo reinforcement learning required that the returns for an entire episode be computed before any values are available for use. The disadvantage of that approach is the full set of returns are required for state value or action value estimates. 
+<h1 id="TD-Reinforcement-Learning-and-Deep-Q-Learning">TD Reinforcement Learning and Deep Q-Learning<a class="anchor-link" href="#TD-Reinforcement-Learning-and-Deep-Q-Learning">&#182;</a></h1><h2 id="Background">Background<a class="anchor-link" href="#Background">&#182;</a></h2>
+  <blockquote>
+<h3 style="text-align: center;">Hyounjun Park</h3>
+</blockquote><p>Monte Carlo reinforcement learning required that the returns for an entire episode be computed before any values are available for use. The disadvantage of that approach is the full set of returns are required for state value or action value estimates. 
 However, it turns out there are algorithms which can compute these estimates with fewer steps, as few as one step known as <strong>time difference learning</strong> and <strong>Q learning</strong></p>
 <p>In this project, we will use time difference reinforcement leraning and Deep Q-Learning to solve a robot navigation problem by finding optimal paths to a goal in a simplified warehouse environment.</p>
 
