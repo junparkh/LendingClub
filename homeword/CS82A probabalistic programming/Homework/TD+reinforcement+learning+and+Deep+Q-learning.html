@@ -11775,9 +11775,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="TD-Reinforcement-Learning-and-Deep-Q-Learning">TD Reinforcement Learning and Deep Q-Learning<a class="anchor-link" href="#TD-Reinforcement-Learning-and-Deep-Q-Learning">&#182;</a></h1> <blockquote>
+<h1 id="TD-Reinforcement-Learning-and-Deep-Q-Learning">TD Reinforcement Learning and Deep Q-Learning<a class="anchor-link" href="#TD-Reinforcement-Learning-and-Deep-Q-Learning">&#182;</a></h1> 
 <h3 style="text-align: center;">Hyounjun Park</h3>
-</blockquote><h2 id="Background">Background<a class="anchor-link" href="#Background">&#182;</a></h2>
+<h2 id="Background">Background<a class="anchor-link" href="#Background">&#182;</a></h2>
  <p>Monte Carlo reinforcement learning required that the returns for an entire episode be computed before any values are available for use. The disadvantage of that approach is the full set of returns are required for state value or action value estimates. 
 However, it turns out there are algorithms which can compute these estimates with fewer steps, as few as one step known as <strong>time difference learning</strong> and <strong>Q learning</strong></p>
 <p>In this project, we will use time difference reinforcement leraning and Deep Q-Learning to solve a robot navigation problem by finding optimal paths to a goal in a simplified warehouse environment.</p>
@@ -12101,7 +12101,7 @@ $V(S_t) = $ is the value at time step t.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To Examine our results, we can see the action values differ by  the reward values.</p>
+<p>We can see the action values differ by  the reward values.</p>
 
 </div>
 </div>
@@ -12154,7 +12154,7 @@ $V(S_t) = $ is the value at time step t.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Execute the function for 1,000 episodes and examine the results.</p>
+<p>We executed the function for 1,000 episodes and examine the results.</p>
 
 </div>
 </div>
@@ -12201,11 +12201,13 @@ $V(S_t) = $ is the value at time step t.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Examine our results to ensure the action value function operates correctly:</p>
+<p>We can see three trait of the action value from our results to ensure the action value function operates correctly.</p>
 <ol>
-<li>Are the values of the taboo states 0? ANS: Yes</li>
-<li>Are the states with the highest values adjacent to the terminal state? ANS: Partialy, because weirdly the right side,13, is smaller than 10. </li>
-<li>Are the values of the states decreasing as the distance from the terminal state increases? ANS: Yes</li>
+<li>The values of the taboo states are 0.</li>
+<li>The highest values adjacent to the terminal state, partialy. Because weirdly the right side,13, is smaller than 10.
+ </li>
+<li>The values of the states decreasing as the distance from the terminal state increases.
+</li>
 </ol>
 
 </div>
@@ -13197,9 +13199,8 @@ Q_2(S_t,A_t) = Q_2(S_t,A_t) + \alpha \big[ R_{t+1} + \gamma Q_1(S_{t+1},argmax_a
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Verify that the result we obtained appears correct.</p>
-<p>Are the values of the goal and taboo states all 0? Do the state values decrease with distance from the goal?</p>
-<p>YES</p>
+<p>We can verify that the result we obtained appears correct. </p>
+<p>The values of the goal and taboo states are all 0. Additionally, the state values decrease with distance from the goal.</p>
 
 </div>
 </div>
@@ -13515,7 +13516,10 @@ Q_2(S_t,A_t) = Q_2(S_t,A_t) + \alpha \big[ R_{t+1} + \gamma Q_1(S_{t+1},argmax_a
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Examine our results. Verify that the most probable paths to the goal from states 2 and 22 are the shortest possible.</p>
+<p>We can examine our results here.
+The most probable paths to the goal from states 2 and 22 are the shortest possible.
+Additionally, at the states 2 and 22, it shows go left and right respectively, which is indicating the shortest path correctly.
+</p>
 
 </div>
 </div>
@@ -13524,8 +13528,8 @@ Q_2(S_t,A_t) = Q_2(S_t,A_t) + \alpha \big[ R_{t+1} + \gamma Q_1(S_{t+1},argmax_a
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>At the states 2 and 22, it shows go left and right respectively, 
-which is indicating the shortest path correctly</p>
+<p>Thanks.
+</p>
 
 </div>
 </div>
